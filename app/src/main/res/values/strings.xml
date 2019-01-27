@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">eCommerce</string>
+    <string name="signInString">Sign-In</string>
+    <string name="emailString">Email:</string>
+</resources>
