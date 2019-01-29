@@ -58,7 +58,8 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
 
         item = new Product("Smartphone", "$189.99", "Our Smartphone" +
                            " comes with all the latest features, including 256GB storage," +
-                           " ultra-fast Wi-Fi, 4K camera with 2x optical zoom, and potato peeler.");
+                           " ultra-fast Wi-Fi, a 4K camera with 2x optical zoom, and a potato" +
+                           " peeler.");
         items.add(item);
     }
 }
