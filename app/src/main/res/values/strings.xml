@@ -10,4 +10,5 @@
     <string name="initialQuantity">Quantity: 1</string>
     <string name="pricePlaceholder">Price: </string>
     <string name="imageDescription">Selected Product</string>
+    <string name="descriptionPlaceholder">Placeholder Description</string>
 </resources>

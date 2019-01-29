@@ -23,6 +23,7 @@
         android:id="@+id/productDescription"
         android:layout_width="374dp"
         android:layout_height="171dp"
+        android:text="@string/descriptionPlaceholder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.486"

@@ -38,20 +38,27 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
         Intent i = new Intent(this, ItemView.class);
         i.putExtra("productName", product.getProductName());
         i.putExtra("price", product.getPrice());
+        i.putExtra("description", product.getDescription());
         startActivity(i);
     }
 
     private void addItems(){
-        Product item = new Product("Laptop Computer", "$199.99");
+        Product item = new Product("Laptop Computer", "$199.99", "Our" +
+                                   " Laptop Computer is a high-quality product for your computing" +
+                                   " needs on the go.");
         items.add(item);
 
-        item = new Product("Desktop Computer", "$499.99");
+        item = new Product("Desktop Computer", "$499.99", "Our" +
+                           " Desktop Computer will bring satisfaction to your dull, dull life.");
         items.add(item);
 
-        item = new Product("Tablet", "$129.99");
+        item = new Product("Tablet", "$129.99", "Please buy our" +
+                           " Tablet? Pretty please?");
         items.add(item);
 
-        item = new Product("Smartphone", "$189.99");
+        item = new Product("Smartphone", "$189.99", "Our Smartphone" +
+                           " comes with all the latest features, including 256GB storage," +
+                           " ultra-fast Wi-Fi, 4K camera with 2x optical zoom, and potato peeler.");
         items.add(item);
     }
 }
