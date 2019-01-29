@@ -10,16 +10,17 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="282dp"
+        android:src="@drawable/credenza"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.207"
-        tools:srcCompat="@tools:sample/backgrounds/scenic[10]" />
+        android:contentDescription="@string/imageDescription" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/productDescription"
         android:layout_width="374dp"
         android:layout_height="171dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,31 +34,63 @@
         android:id="@+id/addToCartButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="addToCart"
         android:text="@string/addToCart"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.946"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/productDescription"
         app:layout_constraintVertical_bias="0.855" />
 
     <Button
         android:id="@+id/subtractButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:onClick="decrementQuantity"
         android:text="@string/subtract"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/addButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="665dp" />
+        app:layout_constraintTop_toBottomOf="@+id/productDescription"
+        app:layout_constraintVertical_bias="0.853" />
 
     <Button
         android:id="@+id/addButton"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:onClick="incrementQuantity"
         android:text="@string/add"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/addToCartButton"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/subtractButton"
-        tools:layout_editor_absoluteY="665dp" />
+        app:layout_constraintTop_toBottomOf="@+id/productDescription"
+        app:layout_constraintVertical_bias="0.853" />
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/initialQuantity"
+        app:layout_constraintBottom_toTopOf="@+id/addButton"
+        app:layout_constraintEnd_toStartOf="@+id/addButton"
+        app:layout_constraintStart_toEndOf="@+id/subtractButton"
+        app:layout_constraintTop_toBottomOf="@+id/productDescription"
+        app:layout_constraintVertical_bias="0.866" />
+
+    <TextView
+        android:id="@+id/priceDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/pricePlaceholder"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/quantity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.327"
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

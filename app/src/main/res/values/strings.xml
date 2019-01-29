@@ -7,4 +7,7 @@
     <string name="addToCart">Add to Cart</string>
     <string name="add">+</string>
     <string name="subtract">-</string>
+    <string name="initialQuantity">Quantity: 1</string>
+    <string name="pricePlaceholder">Price: </string>
+    <string name="imageDescription">Selected Product</string>
 </resources>

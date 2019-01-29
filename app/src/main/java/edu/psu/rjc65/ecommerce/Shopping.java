@@ -1,17 +1,19 @@
 package edu.psu.rjc65.ecommerce;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Shopping extends AppCompatActivity {
+public class Shopping extends AppCompatActivity implements ItemClickListener {
     private RecyclerView recyclerView;
-    public RecyclerView.Adapter adapter;
+    public ProductAdapter adapter;
     private List<Product> items = new ArrayList<>();
 
     @Override
@@ -20,15 +22,23 @@ public class Shopping extends AppCompatActivity {
         setContentView(R.layout.activity_shopping);
 
         recyclerView = findViewById(R.id.itemList);
-        recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new ProductAdapter(items);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        adapter = new ProductAdapter(items, R.layout.product_list_row, this);
         recyclerView.setAdapter(adapter);
+        adapter.setClickListener(this);
 
         addItems();
+    }
+
+    @Override
+    public void onClick(View view, int position){
+        final Product product = items.get(position);
+        Intent i = new Intent(this, ItemView.class);
+        i.putExtra("productName", product.getProductName());
+        i.putExtra("price", product.getPrice());
+        startActivity(i);
     }
 
     private void addItems(){
