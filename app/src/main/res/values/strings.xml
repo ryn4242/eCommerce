@@ -2,4 +2,13 @@
     <string name="app_name">eCommerce</string>
     <string name="signInString">Sign-In</string>
     <string name="emailString">Email:</string>
+    <string name="emailHint">Email Address</string>
+    <string name="passwordHint">Password</string>
+    <string name="addToCart">Add to Cart</string>
+    <string name="add">+</string>
+    <string name="subtract">-</string>
+    <string name="initialQuantity">Quantity: 1</string>
+    <string name="pricePlaceholder">Price: </string>
+    <string name="imageDescription">Selected Product</string>
+    <string name="descriptionPlaceholder">Placeholder Description</string>
 </resources>
