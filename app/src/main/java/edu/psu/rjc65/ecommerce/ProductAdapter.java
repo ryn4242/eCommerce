@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -35,6 +36,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
         Product product = productList.get(position);
         holder.name.setText(product.getProductName());
         holder.price.setText(product.getPrice());
+        holder.image.setImageResource(product.getImage());
     }
 
     public void setClickListener(ItemClickListener itemClickListener){
@@ -48,11 +50,13 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         public TextView name, price;
+        public ImageView image;
 
         public MyViewHolder(View view) {
             super(view);
             name = view.findViewById(R.id.name);
             price = view.findViewById(R.id.price);
+            image = view.findViewById(R.id.image);
             itemView.setTag(itemView);
             itemView.setOnClickListener(this);
         }
