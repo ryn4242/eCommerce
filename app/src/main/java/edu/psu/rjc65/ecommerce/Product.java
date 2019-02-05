@@ -1,13 +1,12 @@
 package edu.psu.rjc65.ecommerce;
 
-import android.media.Image;
-
 public class Product {
     private String productName;
     private String price;
     private String description;
     private int image;
 
+    //Default constructor
     public Product(){
         this.productName = "Three-Footed Credenza";
         this.price = "$999.99";
@@ -15,14 +14,16 @@ public class Product {
         this.image = R.drawable.credenza;
     }
 
-    public Product(String productName, String price, String description, int image){
+    //Constructor with all parameters
+    Product(String productName, String price, String description, int image){
         this.productName = productName;
         this.price = price;
         this.description = description;
         this.image = image;
     }
 
-    public String getProductName() {
+    //Getters and setters
+    String getProductName() {
         return productName;
     }
 
@@ -30,7 +31,7 @@ public class Product {
         this.productName = productName;
     }
 
-    public String getPrice() {
+    String getPrice() {
         return price;
     }
 
@@ -38,7 +39,7 @@ public class Product {
         this.price = price;
     }
 
-    public String getDescription() {
+    String getDescription() {
         return description;
     }
 
@@ -46,7 +47,7 @@ public class Product {
         this.description = description;
     }
 
-    public int getImage() {
+    int getImage() {
         return image;
     }
 

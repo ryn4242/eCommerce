@@ -11,8 +11,9 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.List;
 
+//This activity is displayed after the user logs in
+
 public class Shopping extends AppCompatActivity implements ItemClickListener {
-    private RecyclerView recyclerView;
     public ProductAdapter adapter;
     private List<Product> items = new ArrayList<>();
 
@@ -21,7 +22,8 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shopping);
 
-        recyclerView = findViewById(R.id.itemList);
+        //Create RecyclerView
+        RecyclerView recyclerView = findViewById(R.id.itemList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
@@ -32,10 +34,13 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
         addItems();
     }
 
+    //Go to ItemView when a RecyclerView item is clicked
     @Override
     public void onClick(View view, int position){
         final Product product = items.get(position);
         Intent i = new Intent(this, ItemView.class);
+
+        //Pass item information to ItemView
         i.putExtra("name", product.getProductName());
         i.putExtra("price", product.getPrice());
         i.putExtra("description", product.getDescription());
@@ -43,6 +48,7 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
         startActivity(i);
     }
 
+    //Add items to item list
     private void addItems(){
         Product item = new Product("Laptop Computer", "$199.99", "Our" +
                                    " Laptop Computer is a high-quality product for your computing" +
