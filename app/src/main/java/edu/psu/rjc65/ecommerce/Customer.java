@@ -6,6 +6,7 @@ public class Customer {
     private String email;
     private int age;
 
+    //Constructor
     public Customer(String firstName, String lastName, String email, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -13,6 +14,7 @@ public class Customer {
         this.age = age;
     }
 
+    //Getters and setters
     public String getFirstName() {
         return firstName;
     }

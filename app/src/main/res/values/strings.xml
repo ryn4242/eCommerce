@@ -11,4 +11,5 @@
     <string name="pricePlaceholder">Price: </string>
     <string name="imageDescription">Selected Product</string>
     <string name="descriptionPlaceholder">Placeholder Description</string>
+    <string name="namePlaceholder">Product Name</string>
 </resources>
