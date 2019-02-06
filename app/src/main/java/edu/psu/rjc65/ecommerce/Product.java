@@ -15,6 +15,7 @@ public class Product {
     }
 
     //Constructor with all parameters
+
     Product(String productName, double price, String description, int image){
         this.productName = productName;
         this.price = price;

@@ -1,5 +1,6 @@
 package edu.psu.rjc65.ecommerce;
 
+
 import android.app.Activity;
 import android.content.Intent;
 import android.media.Image;
@@ -20,16 +21,19 @@ public class ItemView extends AppCompatActivity {
     private TextView itemPrice;
     private ImageView itemImage;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_view);
+
 
         itemName = findViewById(R.id.name);
         itemDescription = findViewById(R.id.productDescription);
         itemPrice = findViewById(R.id.priceDisplay);
         itemQuantity = findViewById(R.id.quantity);
         itemImage = findViewById(R.id.image);
+
 
         //Receive item details from Shopping activity and display them
         Intent intent = getIntent();

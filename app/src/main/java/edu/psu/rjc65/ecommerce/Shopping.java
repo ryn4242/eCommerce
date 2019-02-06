@@ -1,6 +1,7 @@
 package edu.psu.rjc65.ecommerce;
 
 import android.content.Intent;
+
 import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,7 +11,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +18,7 @@ import java.util.List;
 //This activity is displayed after the user logs in
 
 public class Shopping extends AppCompatActivity implements ItemClickListener {
+
     static final int GET_CART_ITEM = 1;
 
     public ProductAdapter adapter;
@@ -54,6 +55,7 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
         i.putExtra("price", product.getPrice());
         i.putExtra("description", product.getDescription());
         i.putExtra("image", product.getImage());
+
         startActivityForResult(i,GET_CART_ITEM);
     }
 
@@ -82,10 +84,12 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
                                    " needs on the go.", R.drawable.laptop);
         items.add(item);
 
+
         item = new Product("Desktop Computer", 499.99, "Our" +
                            " Desktop Computer will bring satisfaction to your dull, dull life.",
                            R.drawable.desktop);
         items.add(item);
+
 
         item = new Product("Tablet", 129.99, "Please buy our" +
                            " Tablet? Pretty please?", R.drawable.tablet);
@@ -111,5 +115,4 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
         intent.putParcelableArrayListExtra("array_list", cartItems);
         startActivityForResult(intent, 2);
     }
-
 }
