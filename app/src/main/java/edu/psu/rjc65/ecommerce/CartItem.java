@@ -1,6 +1,9 @@
 package edu.psu.rjc65.ecommerce;
 
-public class CartItem {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class CartItem implements Parcelable {
     String name;
     double price;
     int quantity;
@@ -12,6 +15,27 @@ public class CartItem {
         this.quantity = quantity;
         this.image = image;
     }
+
+    //Constructor from parcel
+    protected CartItem(Parcel in) {
+        name = in.readString();
+        price = in.readDouble();
+        quantity = in.readInt();
+        image = in.readInt();
+    }
+
+    //Create CartItem from a parcel
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        @Override
+        public CartItem createFromParcel(Parcel in) {
+            return new CartItem(in);
+        }
+
+        @Override
+        public CartItem[] newArray(int size) {
+            return new CartItem[size];
+        }
+    };
 
     public String getName() {
         return name;
@@ -29,7 +53,7 @@ public class CartItem {
         this.name = name;
     }
 
-    public double getPrice() {
+    double getPrice() {
         return price;
     }
 
@@ -43,5 +67,17 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    //Required parcel methods
+    public int describeContents(){
+        return this.hashCode();
+    }
+
+    public void writeToParcel(Parcel dest, int flags){
+        dest.writeString(name);
+        dest.writeDouble(price);
+        dest.writeInt(quantity);
+        dest.writeInt(image);
     }
 }

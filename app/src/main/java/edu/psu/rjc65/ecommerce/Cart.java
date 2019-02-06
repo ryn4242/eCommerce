@@ -1,5 +1,6 @@
 package edu.psu.rjc65.ecommerce;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -33,9 +34,11 @@ public class Cart extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
 
-        cartItemsList = new ArrayList<CartItem>();
-        cartItemsList.add(new CartItem("example1", 3.99, 1, R.drawable.desktop));
-        cartItemsList.add(new CartItem("example2", 4.99, 2 , R.drawable.laptop));
+        Intent intent = this.getIntent();
+        ArrayList<CartItem> cartItemsList = intent.getParcelableArrayListExtra("array_list");
+
+        //cartItemsList.add(new CartItem("example1", 3.99, 1, R.drawable.desktop));
+        //cartItemsList.add(new CartItem("example2", 4.99, 2 , R.drawable.laptop));
 
         recyclerView = (RecyclerView) findViewById(R.id.cartRecyclerViewId);
         recyclerView.setHasFixedSize(true);

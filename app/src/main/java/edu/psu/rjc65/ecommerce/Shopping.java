@@ -1,6 +1,7 @@
 package edu.psu.rjc65.ecommerce;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -19,8 +20,8 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
     static final int GET_CART_ITEM = 1;
 
     public ProductAdapter adapter;
-    private List<Product> items = new ArrayList<>();
-    private List<CartItem> cartItems = new ArrayList<>();
+    private ArrayList<Product> items = new ArrayList<>();
+    private ArrayList<CartItem> cartItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,14 +95,12 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
             Log.d("Cart " + i, cartItems.get(i).getName());
             Log.d("Cart " + i, Double.toString(cartItems.get(i).getPrice()));
             Log.d("Cart " + i, Integer.toString(cartItems.get(i).getQuantity()));
-        }
+        }*/
 
-        Bundle bundle = new Bundle();
-        bundle.putSerializable("Cart Array", (Serializable)cartItems);
-        Intent intent = new Intent();
-        intent.putExtra("bundle", bundle);
-        StartActivty(intent);*/
-
-        startActivity(new Intent(Shopping.this, Cart.class));
+        //Bundle bundle = new Bundle();
+        //bundle.putSerializable("Cart Array", (Serializable)cartItems);
+        Intent intent = new Intent(Shopping.this, Cart.class);
+        intent.putParcelableArrayListExtra("array_list", cartItems);
+        startActivity(intent);
     }
 }

@@ -28,8 +28,7 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.cart_row, viewGroup, false);
-        ViewHolder holder = new ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
 
     @Override
@@ -37,10 +36,9 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
         CartItem cartItem = cartItemList.get(i);
         viewHolder.image.setImageResource(cartItem.getImage());
         viewHolder.imageName.setText(cartItem.getName());
-        viewHolder.price.setText(Double.toString(cartItem.getPrice()));
+        viewHolder.price.setText("$" + cartItem.getPrice());
         viewHolder.quantity.setText(Integer.toString(cartItem.getQuantity()));
     }
-
 
     @Override
     public int getItemCount() {
