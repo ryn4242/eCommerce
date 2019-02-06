@@ -1,5 +1,6 @@
 package edu.psu.rjc65.ecommerce;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,7 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private FirebaseAuth mAuth;
@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        email = (EditText)  findViewById(R.id.emailEditTextID);
-        password = (EditText) findViewById(R.id.passwordEditTextID);
-        login = (Button) findViewById(R.id.loginButtonID);
+        email = findViewById(R.id.emailEditTextID);
+        password = findViewById(R.id.passwordEditTextID);
+        login = findViewById(R.id.loginButtonID);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -82,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, Shopping.class));
+                /*
                 final String emailString = email.getText().toString();
                 String passwordString = password.getText().toString();
 
@@ -104,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 }
                             });
-                }
+                }*/
             }
         });
 

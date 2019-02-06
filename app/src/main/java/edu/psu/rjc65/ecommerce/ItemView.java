@@ -1,79 +1,70 @@
 package edu.psu.rjc65.ecommerce;
 
-import android.app.ProgressDialog;
+import android.app.Activity;
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.HashMap;
-import java.util.Map;
+//This activity is displayed when the user taps on an item
 
 public class ItemView extends AppCompatActivity {
-    private DatabaseReference mItemDatabase;
-    private FirebaseAuth mAuth;
-    private FirebaseUser mUser;
-
     private TextView itemQuantity;
-
     int quantity = 1;
-    String productName;
-    String price;
-    String description;
+    private TextView itemName;
+    private TextView itemDescription;
+    private TextView itemPrice;
+    private ImageView itemImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_view);
 
-        mAuth = FirebaseAuth.getInstance();
-        mUser = mAuth.getCurrentUser();
-
-        mItemDatabase = FirebaseDatabase.getInstance().getReference().child("MItem");
-
+        itemName = findViewById(R.id.name);
+        itemDescription = findViewById(R.id.productDescription);
+        itemPrice = findViewById(R.id.priceDisplay);
         itemQuantity = findViewById(R.id.quantity);
+        itemImage = findViewById(R.id.image);
 
+        //Receive item details from Shopping activity and display them
         Intent intent = getIntent();
-
-        productName = intent.getStringExtra("productName");
-        price = intent.getStringExtra("price");
-        description = intent.getStringExtra("description");
+        itemName.setText(intent.getStringExtra("name"));
+        itemDescription.setText(intent.getStringExtra("description"));
+        itemPrice.setText("$" + Double.toString(intent.getDoubleExtra("price", 0.00)));
+        itemImage.setImageResource(intent.getIntExtra("image", R.drawable.credenza));
     }
 
+    //Increment item quantity
     public void incrementQuantity(View view){
         if (quantity < 5){
             quantity++;
-            itemQuantity.setText("Quantity: " + Integer.toString(quantity));
+            itemQuantity.setText("Quantity: " + quantity);
         }
     }
 
+    //Decrement item quantity
     public void decrementQuantity(View view){
         if (quantity > 1){
             quantity--;
-            itemQuantity.setText("Quantity: " + Integer.toString(quantity));
+            itemQuantity.setText("Quantity: " + quantity);
         }
     }
 
+    //Add an item to the cart
     public void addToCart(View view){
-        Toast.makeText(this, "Adding to Cart", Toast.LENGTH_LONG).show();
+        Intent originalIntent = getIntent();
+        Intent intent = new Intent(this, Shopping.class);
+        intent.putExtra("name", itemName.getText().toString());
+        intent.putExtra("price", originalIntent.getDoubleExtra("price", 0.00));
+        intent.putExtra("quantity", quantity);
+        intent.putExtra("image", originalIntent.getIntExtra("image", R.drawable.credenza));
 
-        DatabaseReference newCartItem = mItemDatabase.push();
-
-        Map<String, String> dataToSave = new HashMap<>();
-        dataToSave.put("productName", productName);
-        dataToSave.put("price", price);
-        dataToSave.put("quantity", String.valueOf(quantity));
-
-        newCartItem.setValue(dataToSave);
-
+        setResult(Activity.RESULT_OK, intent);
         finish();
     }
 }

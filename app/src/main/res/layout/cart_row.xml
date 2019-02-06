@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/parentLayout">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/image"
+        android:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product Name"
+        android:layout_toRightOf="@id/image"
+        android:textSize="17dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="15dp"
+        android:textColor="#000"
+        android:id="@+id/imageName"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quantity: 1"
+        android:layout_toRightOf="@id/image"
+        android:textSize="17dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="20dp"
+        android:id="@+id/quantity"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="$0.00"
+        android:layout_toRightOf="@id/imageName"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="80dp"
+        android:textColor="#000"/>
+
+</RelativeLayout>

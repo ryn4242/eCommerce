@@ -32,45 +32,18 @@ public class Cart extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cart);
-        cartItemsList = new ArrayList<>();
+
+        cartItemsList = new ArrayList<CartItem>();
+        cartItemsList.add(new CartItem("example1", 3.99, 1, R.drawable.desktop));
+        cartItemsList.add(new CartItem("example2", 4.99, 2 , R.drawable.laptop));
 
         recyclerView = (RecyclerView) findViewById(R.id.cartRecyclerViewId);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        cartRecyclerAdapter = new CartRecyclerAdapter(cartItemsList, this);
+        recyclerView.setAdapter(cartRecyclerAdapter);
     }
-
-    @Override
-    protected void onStart(){
-        super.onStart();
-
-        mDatabaseReference.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
-
 }
 
 
