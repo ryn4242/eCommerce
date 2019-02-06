@@ -2,20 +2,21 @@ package edu.psu.rjc65.ecommerce;
 
 public class Product {
     private String productName;
-    private String price;
+    private double price;
     private String description;
     private int image;
 
     //Default constructor
     public Product(){
         this.productName = "Three-Footed Credenza";
-        this.price = "$999.99";
+        this.price = 999.99;
         this.description = "Do not buy this";
         this.image = R.drawable.credenza;
     }
 
     //Constructor with all parameters
-    Product(String productName, String price, String description, int image){
+
+    Product(String productName, double price, String description, int image){
         this.productName = productName;
         this.price = price;
         this.description = description;
@@ -31,11 +32,11 @@ public class Product {
         this.productName = productName;
     }
 
-    String getPrice() {
+    double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
