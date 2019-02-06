@@ -3,9 +3,11 @@ package edu.psu.rjc65.ecommerce;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -33,7 +35,7 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-        CartItem cartItem = cartItemList.get(i);
+        final CartItem cartItem = cartItemList.get(i);
         viewHolder.image.setImageResource(cartItem.getImage());
         viewHolder.imageName.setText(cartItem.getName());
         viewHolder.price.setText("$" + cartItem.getPrice());
@@ -51,6 +53,7 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
         TextView imageName;
         TextView quantity;
         TextView price;
+        ImageButton deleteButton;
         RelativeLayout parentLayout;
 
         public ViewHolder(@NonNull View itemView) {
@@ -60,6 +63,17 @@ public class CartRecyclerAdapter extends RecyclerView.Adapter<CartRecyclerAdapte
             quantity = itemView.findViewById(R.id.quantity);
             price = itemView.findViewById(R.id.price);
             parentLayout = itemView.findViewById(R.id.parentLayout);
+            deleteButton = itemView.findViewById(R.id.delete_button);
+
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(v.equals(deleteButton)){
+                        cartItemList.remove(getAdapterPosition());
+                        notifyItemRemoved(getAdapterPosition());
+                    }
+                }
+            });
         }
     }
 }

@@ -1,6 +1,7 @@
 package edu.psu.rjc65.ecommerce;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +28,7 @@ public class Cart extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private CartRecyclerAdapter cartRecyclerAdapter;
-    private List<CartItem> cartItemsList;
+    public ArrayList<CartItem> cartItemsList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +36,7 @@ public class Cart extends AppCompatActivity {
         setContentView(R.layout.activity_cart);
 
         Intent intent = this.getIntent();
-        ArrayList<CartItem> cartItemsList = intent.getParcelableArrayListExtra("array_list");
+        cartItemsList = intent.getParcelableArrayListExtra("array_list");
 
         //cartItemsList.add(new CartItem("example1", 3.99, 1, R.drawable.desktop));
         //cartItemsList.add(new CartItem("example2", 4.99, 2 , R.drawable.laptop));
@@ -46,6 +47,15 @@ public class Cart extends AppCompatActivity {
 
         cartRecyclerAdapter = new CartRecyclerAdapter(cartItemsList, this);
         recyclerView.setAdapter(cartRecyclerAdapter);
+    }
+
+    @Override
+    protected  void onPause(){
+        super.onPause();
+
+        Intent intent = new Intent(this, Shopping.class);
+        intent.putParcelableArrayListExtra("array_list", cartItemsList);
+        setResult(RESULT_OK, intent);
     }
 }
 

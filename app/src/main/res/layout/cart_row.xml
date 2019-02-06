@@ -37,9 +37,17 @@
         android:layout_height="wrap_content"
         android:text="$0.00"
         android:layout_toRightOf="@id/imageName"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="35dp"
         android:layout_marginLeft="80dp"
         android:textColor="#000"
         android:id="@+id/price"/>
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/deletebutton2"
+        android:layout_toRightOf="@id/image"
+        android:layout_marginLeft="280dp"
+        android:id="@+id/delete_button"/>
 
 </RelativeLayout>

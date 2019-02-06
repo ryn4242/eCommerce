@@ -9,6 +9,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.TextView;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,6 +23,8 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
     public ProductAdapter adapter;
     private ArrayList<Product> items = new ArrayList<>();
     private ArrayList<CartItem> cartItems = new ArrayList<>();
+    private TextView totalTextView;
+    double runningTotal = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +67,11 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
                         total, data.getIntExtra("quantity", 0),
                         data.getIntExtra("image", R.drawable.credenza)));
 
+                runningTotal += total;
+            }
+        } else if (resultCode == 2){
+            if(requestCode == RESULT_OK){
+                cartItems = data.getParcelableArrayListExtra("array_list");
             }
         }
     }
@@ -101,6 +109,7 @@ public class Shopping extends AppCompatActivity implements ItemClickListener {
         //bundle.putSerializable("Cart Array", (Serializable)cartItems);
         Intent intent = new Intent(Shopping.this, Cart.class);
         intent.putParcelableArrayListExtra("array_list", cartItems);
-        startActivity(intent);
+        startActivityForResult(intent, 2);
     }
+
 }
